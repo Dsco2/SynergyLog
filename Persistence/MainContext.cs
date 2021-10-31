@@ -21,8 +21,3 @@ namespace Persistence
 }
 
 
-
-//
-//var settings = MongoClientSettings.FromConnectionString("mongodb+srv://Dsco:<password>@cluster0.eq1vt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
-//var client = new MongoClient(settings);
-//var database = client.GetDatabase("test");

@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Business.Models;
-using Business.Services;
 
 namespace Api.Controllers
 {
@@ -10,26 +9,19 @@ namespace Api.Controllers
     [ApiController]
     public class ValuesController:ControllerBase
     {
-        private readonly ILogging _logging;
-        private readonly IBookstoreDatabaseSettings _bookstoreDatabase;
-        private readonly BookService _bookService;
+        private readonly ILoggingService _loggingService;
 
-        public ValuesController(ILogging logging, IBookstoreDatabaseSettings bookstoreDatabase, BookService bookService)
+        public ValuesController(ILoggingService loggingService)
         {
-            _logging = logging;
-            _bookstoreDatabase = bookstoreDatabase;
-            _bookService = bookService;
+            _loggingService = loggingService;
         }
-
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<List<Synergy>> Get()
         {
-            var test = _bookService.Create(new Book());
-            var temp = _bookService.Get();
-            return new string[] {_logging.Test()};
-            //return new string[] { "value1","value2" };
+            _loggingService.CreateElement();
+            return _loggingService.GetData();
         }
 
         // GET api/values/5
